@@ -1,0 +1,6 @@
+main = 'https://stellarburgers.nomoreparties.site'
+register_user = main + '/api/auth/register'
+login_user = main + '/api/auth/login'
+user = main + '/api/auth/user'
+ingredients = main + '/api/ingredients'
+order = main + '/api/orders'
