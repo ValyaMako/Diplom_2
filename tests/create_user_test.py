@@ -8,14 +8,22 @@ class TestCreateUser:
 
     @allure.title('Проверяем создание пользователя')
     @allure.description('В качестве подтверждения создания пользователя авторизуем его')
-    def test_create_user(self, user):
-        _, _, login_response, _ = user
+    def test_create_user(self):
+        data = get_user_data()
+        email_pass, reg_response = User.register_user(data)
+        assert reg_response.status_code == 200
+        assert reg_response.json()["success"]
+        auth_data = get_auth_data(email_pass)
+        login_response = User.login_user(auth_data)
+        access_token = (login_response.json())["accessToken"]
         assert login_response.status_code == 200
         assert login_response.json()["success"]
+        User.delete_user(access_token)
+
 
     @allure.title('Проверяем, что нельзя создать двух одинаковых пользователей')
     def test_create_identical_user_show_error(self, user):
-        email_pass, _, reg_response, _ = user
+        email_pass, reg_response, _, _ = user
         email = email_pass[0]
         password = email_pass[1]
         name = email_pass[2]

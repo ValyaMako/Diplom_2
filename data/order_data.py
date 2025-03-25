@@ -7,9 +7,6 @@ def get_ing_for_order(ing_ids):
     ingredients_for_order = []
     if ing_ids and len(ing_ids) >= 3:
         ingredients_for_order = random.sample(ing_ids, 3)
-        print("Выбранные ингредиенты:", ingredients_for_order)
-    else:
-        print("Недостаточно ингредиентов для выбора.")
     return {"ingredients": ingredients_for_order}
 
 @allure.step('Меняем в правильном хеше первый символ на W')
@@ -22,9 +19,6 @@ def get_wrong_ing_for_order(ing_ids):
     ingredients_for_order = []
     if ing_ids and len(ing_ids) >= 3:
         ingredients_for_order = random.sample(wrong_hashes, 3)
-        print("Выбранные ингредиенты:", ingredients_for_order)
-    else:
-        print("Недостаточно ингредиентов для выбора.")
     return {"ingredients": ingredients_for_order}
 
 get_orders = {

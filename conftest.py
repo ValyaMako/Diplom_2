@@ -18,7 +18,7 @@ def user():
 
 @pytest.fixture
 def order(user):
-    _, _, _, access_token = user
+    *_, access_token = user
     ing_ids = Order.get_ingredients()
     ingredients_for_order = get_ing_for_order(ing_ids)
     Order.create_order(ingredients_for_order, access_token)

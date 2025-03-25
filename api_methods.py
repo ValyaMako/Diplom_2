@@ -13,8 +13,6 @@ class User:
             email_pass.append(data["email"])
             email_pass.append(data["password"])
             email_pass.append(data["name"])
-        else:
-            print(f"Ошибка регистрации: {reg_response.status_code}, {reg_response.text}")
         return email_pass, reg_response
 
     @staticmethod
